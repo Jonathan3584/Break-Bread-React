@@ -9,7 +9,7 @@ class AuthenticationShell extends Component {
   constructor(props) {
     super(props);
     // set up our state.
-    this.state = {}
+    this.state = {url: "http://localhost:3000"}
   }
 
 componentDidMount() {
@@ -67,5 +67,28 @@ componentDidMount() {
     });
   }
 
+renderView() {
+    return (
+      <Switch>
+        <Route exact path="/" render={_ => <Redirect to="/auth" />} />
+        <Route
+          exact
+          path="/auth"
+          render={props => (
+            <UserAuth {...props} setUser={this.setUser} url={this.state.url} />
+          )}
+        />
+        
+      </Switch>
+    );
+  }
+
+render() {
+    return <div className="Contents">{this.renderView()}</div>;
+  }
+}
+
+
+export default AuthenticationShell;
 
 

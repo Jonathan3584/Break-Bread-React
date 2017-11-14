@@ -23,6 +23,7 @@ class SignUp extends Component {
   signUp(e) {
     e.preventDefault(); // prevent default form action
     // make request to server to create a new user
+    console.log(`${this.props.url}/users`, "signup.js")
     axios.post(`${this.props.url}/users`, this.state.inputs).then(res => {
       // the response will be the user
       // set the user
