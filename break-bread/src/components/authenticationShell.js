@@ -4,15 +4,23 @@ import Cookies from "../helpers/cookies";
 import UserAuth from "./userAuth";
 import axios from "axios";
 import "../App.css";
+import NavBar from "./navBar";
+import NewForm from "./newForm";
+import EditForm from "./editForm";
+import PeopleDashboard from "./peopleDashboard";
+import RestaurantDashboard from "./restaurantDashboard";
 
 class AuthenticationShell extends Component {
   constructor(props) {
     super(props);
     // set up our state.
-    this.state = {url: "http://localhost:3000"}
+    this.state = {
+      user: false,
+      url: "http://localhost:3000"
+    };
   }
 
-componentDidMount() {
+  componentDidMount() {
     this.initUser();
   }
 
@@ -67,7 +75,30 @@ componentDidMount() {
     });
   }
 
-renderView() {
+  linkToPeopleDashboard() {
+    //Axios call to Ruby server for people in DB
+    //Render route for peopleDashboard
+  }
+
+  linkToNewPerson(){
+
+  }
+
+  linkToEditPerson(){
+
+  }
+
+  linkToRestaurantsDashboard() {
+    //Axios call to Ruby server for restaurants in DB
+    //Render route for restaurantsDashboard
+  }
+
+  searchRestaurants() {
+    //Axios call to Ruby server for two API calls
+    //Render route for search Results
+  }
+
+  renderView() {
     return (
       <Switch>
         <Route exact path="/" render={_ => <Redirect to="/auth" />} />
@@ -78,17 +109,35 @@ renderView() {
             <UserAuth {...props} setUser={this.setUser} url={this.state.url} />
           )}
         />
-        
+        <Route
+          path="/people"
+          render={props => <PeopleDashboard {...props} url={this.state.url} />}
+        />
+        <Route
+          path="/people/new"
+          render={props => <NewForm {...props} url={this.state.url} />}
+        />
+        <Route
+          path="/people/edit"
+          render={props => <EditForm {...props} url={this.state.url} />}
+        />
+        <Route
+          path="/people/:id"
+          render={props => <RestaurantDashboard {...props} url={this.state.url} />}
+        />
       </Switch>
     );
   }
 
-render() {
-    return <div className="Contents">{this.renderView()}</div>;
+  render() {
+    return;
+    <div id="container">
+      <div id="navBar">
+        <NavBar logout={this.logout}/>
+      </div>
+      <div className="contents">{this.renderView()}</div>;
+    </div>;
   }
 }
 
-
 export default AuthenticationShell;
-
-

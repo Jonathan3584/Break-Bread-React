@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import "../App.css";
 
-class SearchResults extends Component {
+class RestaurantItem extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -17,4 +17,4 @@ render(){
 
 }
 
-export default SearchResults;
+export default RestaurantItem;
