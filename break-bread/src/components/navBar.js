@@ -13,7 +13,10 @@ class NavBar extends Component {
 render(){
 	return(
 		<div>
-			<h1>Nav Bar</h1>
+			<h1>Break Bread</h1>
+			<Link class="navLink" to="../people">People</Link>
+			<Link class="navLink" to="../people/new">New Person</Link>
+			<p class="navLink" onClick={this.props.logout}>Log Out</p>
 		</div>)
 }
 

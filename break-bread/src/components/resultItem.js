@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import "../App.css";
 
-class PeopleItem extends Component {
+class ResultItem extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -13,11 +13,12 @@ class PeopleItem extends Component {
 render(){
 	return(
 		<div>
-			<h2>People Item</h2>
-		</div>)
+			<h1>Result Item</h1>
+		</div>
+		)
 }
 
 
 }
 
-export default PeopleItem;
+export default ResultItem;

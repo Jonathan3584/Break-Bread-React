@@ -25,6 +25,35 @@ class EditForm extends Component {
 		this.giftHoliday3Change = this.giftHoliday3Change.bind(this);
 		this.budgetChange = this.budgetChange.bind(this);
 	}
+	personSubmit(event){
+	event.preventDefault();
+	const {
+		name,
+		address,
+		relationship,
+		birthDate,
+		giftHoliday1,
+		giftHoliday2,
+		giftHoliday3,
+		budget
+	} = this.state;
+	console.log(this.state);
+	axios
+	//THIS URL MAY NOT BE ACCURATE -- PARAMS.ID is a placeholder
+	.put("${this.props.url}/people/${params.id}", {
+		name: name,
+		address: address,
+		relationship: relationship,
+		birthDate: birthDate,
+		giftHoliday1: giftHoliday1,
+		giftHoliday2: giftHoliday2,
+		giftHoliday3: giftHoliday3,
+		budget: budget
+	})
+	.then(response => {
+		//linkTo "/people"
+	})
+}
 nameChange(event) {
 event.preventDefault();
 this.setState({
@@ -136,7 +165,8 @@ render(){
 					<br />
 					<input type="submit" value="Submit" />
 				</form>
-			</div>)
+			</div>
+			);
 }
 
 

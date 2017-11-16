@@ -11,7 +11,11 @@ class RestaurantItem extends Component {
 
 
 render(){
-	return()
+	return(
+		<div>
+			<h1>Restaurant Item</h1>
+		</div>
+		)
 }
 
 

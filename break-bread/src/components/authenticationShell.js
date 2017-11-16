@@ -9,6 +9,7 @@ import NewForm from "./newForm";
 import EditForm from "./editForm";
 import PeopleDashboard from "./peopleDashboard";
 import RestaurantsDashboard from "./restaurantsDashboard";
+import SearchResults from "./searchResults";
 
 class AuthenticationShell extends Component {
   constructor(props) {
@@ -16,13 +17,14 @@ class AuthenticationShell extends Component {
     // set up our state.
     this.state = {
       user: false,
-      url: "http://localhost:3000"
+      url: "http://localhost:3000",
+      people: []
     };
     this.initUser = this.initUser.bind(this);
     this.setUser = this.setUser.bind(this);
     this.logout = this.logout.bind(this);
     this.initUser = this.initUser.bind(this);
-
+    this.recordPeople = this.recordPeople.bind(this);
   }
 
   componentDidMount() {
@@ -46,7 +48,7 @@ class AuthenticationShell extends Component {
           // the response will be the user
           // set the user in the state, and change the mode to content
           this.setState({ user: res.data }, () => {
-            this.props.history.push(`/people/`);
+            console.log("user confirmed");
           });
         })
         .catch(err => {
@@ -79,28 +81,10 @@ class AuthenticationShell extends Component {
       this.props.history.push(`/auth/`);
     });
   }
-
-  linkToPeopleDashboard() {
-    //Axios call to Ruby server for people in DB
-    //Render route for peopleDashboard
-  }
-
-  linkToNewPerson(){
-
-  }
-
-  linkToEditPerson(){
-
-  }
-
-  linkToRestaurantsDashboard() {
-    //Axios call to Ruby server for restaurants in DB
-    //Render route for restaurantsDashboard
-  }
-
-  searchRestaurants() {
-    //Axios call to Ruby server for two API calls
-    //Render route for search Results
+  recordPeople(data) {
+    this.setState({ people: data}, () => {
+        console.log('people retrieved', this.state.people)
+      });
   }
 
   renderView() {
@@ -115,33 +99,76 @@ class AuthenticationShell extends Component {
           )}
         />
         <Route
+          exact
           path="/people"
-          render={props => <PeopleDashboard {...props} url={this.state.url} />}
+          render={props => (
+            <div>
+              <div id="navBar">
+                <NavBar logout={this.logout} />
+              </div>
+              <PeopleDashboard
+                {...props}
+                url={this.state.url}
+                recordPeople={this.recordPeople}
+                people={this.state.people}
+                userId={this.state.user.id}
+              />
+            </div>
+          )}
         />
         <Route
           path="/people/new"
-          render={props => <NewForm {...props} url={this.state.url} />}
+          render={props => (
+            <div>
+              <div id="navBar">
+                <NavBar logout={this.logout} />
+              </div>
+              <NewForm {...props} url={this.state.url} />
+            </div>
+          )}
         />
         <Route
-          path="/people/edit"
-          render={props => <EditForm {...props} url={this.state.url} />}
+          path="/people/:id/edit"
+          render={props => (
+            <div>
+              <div id="navBar">
+                <NavBar logout={this.logout} />
+              </div>
+              <EditForm {...props} url={this.state.url} />
+            </div>
+          )}
+        />
+        <Route
+          path="/people/:id/search"
+          render={props => (
+            <div>
+              <div id="navBar">
+                <NavBar logout={this.logout} />
+              </div>
+              <SearchResults {...props} url={this.state.url} />
+            </div>
+          )}
         />
         <Route
           path="/people/:id"
-          render={props => <RestaurantsDashboard {...props} url={this.state.url} />}
+          render={props => (
+            <div>
+              <div id="navBar">
+                <NavBar logout={this.logout} />
+              </div>
+              <RestaurantsDashboard {...props} url={this.state.url} />
+            </div>
+          )}
         />
       </Switch>
     );
   }
 
   render() {
-    return(
-    <div id="container">
-      <div id="navBar">
-        <NavBar logout={this.logout}/>
+    return (
+      <div id="container">
+        <div className="contents">{this.renderView()}</div>
       </div>
-      <div className="contents">{this.renderView()}</div>;
-    </div>
     );
   }
 }
