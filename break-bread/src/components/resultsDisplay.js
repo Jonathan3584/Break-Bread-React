@@ -11,7 +11,10 @@ class ResultsDisplay extends Component {
 
 
 render(){
-	return()
+	return(
+		<div>
+		<h1>Results Display</h1>
+		</div>)
 }
 
 

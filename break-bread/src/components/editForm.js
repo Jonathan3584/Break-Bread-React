@@ -75,7 +75,68 @@ this.setState({
 }
 
 render(){
-	return()
+	return(<div>
+				<h1>Add Someone You Care About</h1>
+				<form onSubmit={this.personSubmit}>
+					<label>Name: </label>
+					<input
+						type="text"
+						onChange={this.nameChange}
+						value={this.state.name}
+					/>
+					<br />
+					<label>Address: </label>
+					<input
+						type="text"
+						onChange={this.addressChange}
+						value={this.state.address}
+					/>
+					<br />
+					<label>Relationship: </label>
+					<input
+						type="text"
+						onChange={this.relationshipChange}
+						value={this.state.relationship}
+					/>
+					<br />
+					<label>Birthday: </label>
+					<input
+						type="date"
+						onChange={this.birthDateChange}
+						value={this.state.birthDate}
+					/>
+					<br />
+					<label>Budget: </label>
+					<input
+						type="text"
+						onChange={this.budgetChange}
+						value={this.state.budget}
+					/>
+					<br />
+					<label>Anniversary: </label>
+					<input
+						type="date"
+						onChange={this.giftHoliday1Change}
+						value={this.state.giftHoliday1}
+					/>
+					<br />
+					<label>Seasonal Holiday: </label>
+					<input
+						type="date"
+						onChange={this.giftHoliday2Change}
+						value={this.state.giftHoliday2}
+					/>
+					<br />
+					<label>Just because: </label>
+					<input
+						type="date"
+						onChange={this.giftHoliday3Change}
+						value={this.state.giftHoliday3}
+					/>
+					<br />
+					<input type="submit" value="Submit" />
+				</form>
+			</div>)
 }
 
 

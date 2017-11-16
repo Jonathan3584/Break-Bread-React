@@ -11,7 +11,10 @@ class PeopleItem extends Component {
 
 
 render(){
-	return()
+	return(
+		<div>
+			<h2>People Item</h2>
+		</div>)
 }
 
 

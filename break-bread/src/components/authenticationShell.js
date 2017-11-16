@@ -8,7 +8,7 @@ import NavBar from "./navBar";
 import NewForm from "./newForm";
 import EditForm from "./editForm";
 import PeopleDashboard from "./peopleDashboard";
-import RestaurantDashboard from "./restaurantDashboard";
+import RestaurantsDashboard from "./restaurantsDashboard";
 
 class AuthenticationShell extends Component {
   constructor(props) {
@@ -18,6 +18,11 @@ class AuthenticationShell extends Component {
       user: false,
       url: "http://localhost:3000"
     };
+    this.initUser = this.initUser.bind(this);
+    this.setUser = this.setUser.bind(this);
+    this.logout = this.logout.bind(this);
+    this.initUser = this.initUser.bind(this);
+
   }
 
   componentDidMount() {
@@ -41,7 +46,7 @@ class AuthenticationShell extends Component {
           // the response will be the user
           // set the user in the state, and change the mode to content
           this.setState({ user: res.data }, () => {
-            this.props.history.push(`/woke/`);
+            this.props.history.push(`/people/`);
           });
         })
         .catch(err => {
@@ -65,7 +70,7 @@ class AuthenticationShell extends Component {
     Cookies.set("token", user.token);
     // set state to have the user and the mode to content
     this.setState({ user: user }, () => {
-      this.props.history.push(`/woke/`);
+      this.props.history.push(`/people/`);
     });
   }
   logout() {
@@ -123,20 +128,21 @@ class AuthenticationShell extends Component {
         />
         <Route
           path="/people/:id"
-          render={props => <RestaurantDashboard {...props} url={this.state.url} />}
+          render={props => <RestaurantsDashboard {...props} url={this.state.url} />}
         />
       </Switch>
     );
   }
 
   render() {
-    return;
+    return(
     <div id="container">
       <div id="navBar">
         <NavBar logout={this.logout}/>
       </div>
       <div className="contents">{this.renderView()}</div>;
-    </div>;
+    </div>
+    );
   }
 }
 

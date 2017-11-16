@@ -23,6 +23,7 @@ class Login extends Component {
     // send request to make sure the email and password are correct
     axios.post(`${this.props.url}/login`, this.state.inputs).then(res => {
       // set the user based off of the response
+      console.log("login-login", res.data);
       this.props.setUser(res.data);
     });
   }
@@ -40,10 +41,7 @@ class Login extends Component {
   render() {
     return (
       <div className="StartContainer">
-        <div className="StartNav">
-          <p className="WokeSmallText">Woke</p>
-          <p className="TaglineText">Socio-political awareness made easy</p>
-        </div>
+        
 
         <div className="StartContainerMini">
           <p className="LogInText">Welcome Back!</p>

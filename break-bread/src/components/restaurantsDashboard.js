@@ -11,7 +11,10 @@ class RestaurantsDashboard extends Component {
 
 
 render(){
-	return()
+	return(
+		<div>
+		<h1>Restaurants Dashboard</h1>
+		</div>)
 }
 
 
