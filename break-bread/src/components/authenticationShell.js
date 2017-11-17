@@ -27,7 +27,6 @@ class AuthenticationShell extends Component {
     this.initUser = this.initUser.bind(this);
     this.recordPeople = this.recordPeople.bind(this);
     this.recordRestaurants = this.recordRestaurants.bind(this);
-    this.printState = this.printState.bind(this);
   }
 
   componentDidMount() {
@@ -94,9 +93,7 @@ class AuthenticationShell extends Component {
       console.log('restaurants retrieved', this.state.restaurants)
     })
   }
-  // printState() {
-  //   console.log("authShell printState() state.people", this.state.people)
-  // }
+
 
   renderView() {
     return (
@@ -161,8 +158,7 @@ class AuthenticationShell extends Component {
               </div>
               <SearchResults 
               {...props} 
-              url={this.state.url}
-              people={this.state.people} />
+              url={this.state.url} />
             </div>
           )}
         />
