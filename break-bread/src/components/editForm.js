@@ -20,10 +20,8 @@ class EditForm extends Component {
 		this.addressChange = this.addressChange.bind(this);
 		this.relationshipChange = this.relationshipChange.bind(this);
 		this.birthDateChange = this.birthDateChange.bind(this);
-		this.giftHoliday1Change = this.giftHoliday1Change.bind(this);
-		this.giftHoliday2Change = this.giftHoliday2Change.bind(this);
-		this.giftHoliday3Change = this.giftHoliday3Change.bind(this);
 		this.budgetChange = this.budgetChange.bind(this);
+		this.personSubmit = this.personSubmit.bind(this)
 	}
 	personSubmit(event){
 	event.preventDefault();
@@ -32,26 +30,25 @@ class EditForm extends Component {
 		address,
 		relationship,
 		birthDate,
-		giftHoliday1,
-		giftHoliday2,
-		giftHoliday3,
 		budget
 	} = this.state;
 	console.log(this.state);
 	axios
 	//THIS URL MAY NOT BE ACCURATE -- PARAMS.ID is a placeholder
-	.put("${this.props.url}/people/${params.id}", {
+	.put(`${this.props.url}/people/${this.props.match.params.id}`, {person:
+		{
 		name: name,
 		address: address,
 		relationship: relationship,
-		birthDate: birthDate,
-		giftHoliday1: giftHoliday1,
-		giftHoliday2: giftHoliday2,
-		giftHoliday3: giftHoliday3,
+		birth_date: birthDate,
 		budget: budget
+		}
 	})
 	.then(response => {
-		//linkTo "/people"
+		console.log('person updated')
+	})
+	.catch(err => {
+		console.log('Error in editForm, personSubmit', err)
 	})
 }
 nameChange(event) {
@@ -78,24 +75,6 @@ this.setState({
 	birthDate: event.target.value
 })	
 }
-giftHoliday1Change(event) {
-event.preventDefault();
-this.setState({
-	giftHoliday1: event.target.value
-})	
-}
-giftHoliday2Change(event) {
-event.preventDefault();
-this.setState({
-	giftHoliday2: event.target.value
-})	
-}
-giftHoliday3Change(event) {
-event.preventDefault();
-this.setState({
-	giftHoliday3: event.target.value
-})	
-}
 budgetChange(event) {
 event.preventDefault();
 this.setState({
@@ -105,7 +84,7 @@ this.setState({
 
 render(){
 	return(<div>
-				<h1>Add Someone You Care About</h1>
+				<h1>Edit whatever was wrong</h1>
 				<form onSubmit={this.personSubmit}>
 					<label>Name: </label>
 					<input
@@ -140,27 +119,6 @@ render(){
 						type="text"
 						onChange={this.budgetChange}
 						value={this.state.budget}
-					/>
-					<br />
-					<label>Anniversary: </label>
-					<input
-						type="date"
-						onChange={this.giftHoliday1Change}
-						value={this.state.giftHoliday1}
-					/>
-					<br />
-					<label>Seasonal Holiday: </label>
-					<input
-						type="date"
-						onChange={this.giftHoliday2Change}
-						value={this.state.giftHoliday2}
-					/>
-					<br />
-					<label>Just because: </label>
-					<input
-						type="date"
-						onChange={this.giftHoliday3Change}
-						value={this.state.giftHoliday3}
 					/>
 					<br />
 					<input type="submit" value="Submit" />

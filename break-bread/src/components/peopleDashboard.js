@@ -7,7 +7,6 @@ import PersonItem from "./personItem"
 class PeopleDashboard extends Component {
 	constructor(props) {
 		super(props);
-		
 	}
 	
 	componentDidMount(){
@@ -20,6 +19,18 @@ class PeopleDashboard extends Component {
 			console.log('error in PeopleDashboard, componentDidMount', err);
 		});
 		}
+
+	deletePerson(){
+		console.log(this.props)
+		// axios
+		// .delete(`${this.props.url}/people/${id}`)
+		// .then(res => {
+		// 	console.log('person removed from DB')
+		// })
+		// .catch(err => {
+		// 	console.log('error in PeopleDashboard, deletePerson', err)
+		// })
+	}
 	
 	personTile(personDatum, index) {
 
@@ -31,7 +42,7 @@ class PeopleDashboard extends Component {
 	}
 
 	render(){
-		console.log('in PeopleDashboard.render. this.props.people:', this.props.people);
+	
 		const people = this.props.people.map(this.personTile)
 		return(
 			<div>

@@ -11,19 +11,14 @@ class NewForm extends Component {
 			address: '',
 			relationship: '',
 			birthDate: '',
-			giftHoliday1: '',
-			giftHoliday2: '',
-			giftHoliday3: '',
 			budget: ''
 		}
 		this.nameChange = this.nameChange.bind(this);
 		this.addressChange = this.addressChange.bind(this);
 		this.relationshipChange = this.relationshipChange.bind(this);
 		this.birthDateChange = this.birthDateChange.bind(this);
-		this.giftHoliday1Change = this.giftHoliday1Change.bind(this);
-		this.giftHoliday2Change = this.giftHoliday2Change.bind(this);
-		this.giftHoliday3Change = this.giftHoliday3Change.bind(this);
 		this.budgetChange = this.budgetChange.bind(this);
+		this.personSubmit = this.personSubmit.bind(this);
 	}
 personSubmit(event){
 	event.preventDefault();
@@ -32,25 +27,25 @@ personSubmit(event){
 		address,
 		relationship,
 		birthDate,
-		giftHoliday1,
-		giftHoliday2,
-		giftHoliday3,
 		budget
 	} = this.state;
-	console.log(this.state);
+	const	userId = this.props.userId;
 	axios
-	.post("${this.props.url}/people/new", {
+	.post(`${this.props.url}/people/`, {person:
+		{
 		name: name,
 		address: address,
 		relationship: relationship,
-		birthDate: birthDate,
-		giftHoliday1: giftHoliday1,
-		giftHoliday2: giftHoliday2,
-		giftHoliday3: giftHoliday3,
-		budget: budget
+		birth_date: birthDate,
+		budget: budget,
+		user_id: userId
+		}
 	})
 	.then(response => {
-		//linkTo "/people"
+		console.log('person added')
+	})
+	.catch(err => {
+		console.log('Error in newForm, personSubmit', err)
 	})
 }
 nameChange(event) {
@@ -75,24 +70,6 @@ birthDateChange(event) {
 event.preventDefault();
 this.setState({
 	birthDate: event.target.value
-})	
-}
-giftHoliday1Change(event) {
-event.preventDefault();
-this.setState({
-	giftHoliday1: event.target.value
-})	
-}
-giftHoliday2Change(event) {
-event.preventDefault();
-this.setState({
-	giftHoliday2: event.target.value
-})	
-}
-giftHoliday3Change(event) {
-event.preventDefault();
-this.setState({
-	giftHoliday3: event.target.value
 })	
 }
 budgetChange(event) {
@@ -141,27 +118,6 @@ render(){
 						type="text"
 						onChange={this.budgetChange}
 						value={this.state.budget}
-					/>
-					<br />
-					<label>Anniversary: </label>
-					<input
-						type="date"
-						onChange={this.giftHoliday1Change}
-						value={this.state.giftHoliday1}
-					/>
-					<br />
-					<label>Seasonal Holiday: </label>
-					<input
-						type="date"
-						onChange={this.giftHoliday2Change}
-						value={this.state.giftHoliday2}
-					/>
-					<br />
-					<label>Just because: </label>
-					<input
-						type="date"
-						onChange={this.giftHoliday3Change}
-						value={this.state.giftHoliday3}
 					/>
 					<br />
 					<input type="submit" value="Submit" />

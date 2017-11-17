@@ -31,7 +31,6 @@ render(){
 		)
 }
 
-
 }
 
 export default PersonItem;

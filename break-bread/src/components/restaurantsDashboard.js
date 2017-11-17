@@ -7,30 +7,53 @@ import RestaurantItem from "./restaurantItem"
 class RestaurantsDashboard extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			restaurants: []
-		}
+		this.deleteRestaurant = this.deleteRestaurant.bind(this);
+		this.restaurantTile = this.restaurantTile.bind(this);
 	}
 
 	componentDidMount(){
+		//NEED TO CONFIRM ID NOTATION
+		console.log("restaurant dashboard, componentDidMount, this.props", this.props)
 		axios
-		.get(`${this.props.url}/people/${:id}`)
+		.get(`${this.props.url}/people/${this.props.match.params.id}/restaurants`)
+		.then(res => {
+			this.props.recordRestaurants(res.data)
+		})
+		.catch(err => {
+			console.log('error in RestaurantsDashboard, componentDidMount', err)
+		})
 	}	
 
-	formatAddress(){
-		//Format address for google geocoding API
+	deleteRestaurant() {
+		console.log(this.props)
+		// axios
+		// .delete(`${this.props.url}/people/${person_id}/restaurants/${id}`)
+		// .then(res => {
+		// 	console.log('restaurant removed from DB')
+		// })
+		// .catch(err => {
+		// 	console.log('error in RestaurantsDashboard, deleteRestaurant', err)
+		// })
 	}
-	searchRestaurants(){
 
+	restaurantTile(restaurantDatum, index) {
+
+		return(
+			<RestaurantItem
+			delete={this.deleteRestaurant}
+			data={restaurantDatum}
+				/>
+			)
 	}
-
 
 	render(){
+		console.log('in RestaurantsDashboard.render this.props.restaurants', this.props.restaurants)
+		const restaurants = this.props.restaurants.map(this.restaurantTile) 
 		return(
 			<div>
 			<h1 class="dashboardHeader">Restaurants Dashboard</h1>
-			<RestaurantItem />
-			<p>link to fire API calls</p>
+			{restaurants}
+			<Link class="searchLink" to={`${this.props.match.params.id}/search`}>Find More Restaurants</Link>
 			</div>
 			);
 	}

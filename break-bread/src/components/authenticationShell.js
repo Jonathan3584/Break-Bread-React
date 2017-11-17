@@ -18,13 +18,16 @@ class AuthenticationShell extends Component {
     this.state = {
       user: false,
       url: "http://localhost:3000",
-      people: []
+      people: [],
+      restaurants: []
     };
     this.initUser = this.initUser.bind(this);
     this.setUser = this.setUser.bind(this);
     this.logout = this.logout.bind(this);
     this.initUser = this.initUser.bind(this);
     this.recordPeople = this.recordPeople.bind(this);
+    this.recordRestaurants = this.recordRestaurants.bind(this);
+    this.printState = this.printState.bind(this);
   }
 
   componentDidMount() {
@@ -86,6 +89,14 @@ class AuthenticationShell extends Component {
         console.log('people retrieved', this.state.people)
       });
   }
+  recordRestaurants(data) {
+    this.setState({restaurants: data}, () => {
+      console.log('restaurants retrieved', this.state.restaurants)
+    })
+  }
+  // printState() {
+  //   console.log("authShell printState() state.people", this.state.people)
+  // }
 
   renderView() {
     return (
@@ -123,7 +134,10 @@ class AuthenticationShell extends Component {
               <div id="navBar">
                 <NavBar logout={this.logout} />
               </div>
-              <NewForm {...props} url={this.state.url} />
+              <NewForm 
+              {...props} 
+              url={this.state.url}
+              userId={this.state.user.id} />
             </div>
           )}
         />
@@ -145,7 +159,10 @@ class AuthenticationShell extends Component {
               <div id="navBar">
                 <NavBar logout={this.logout} />
               </div>
-              <SearchResults {...props} url={this.state.url} />
+              <SearchResults 
+              {...props} 
+              url={this.state.url}
+              people={this.state.people} />
             </div>
           )}
         />
@@ -156,7 +173,12 @@ class AuthenticationShell extends Component {
               <div id="navBar">
                 <NavBar logout={this.logout} />
               </div>
-              <RestaurantsDashboard {...props} url={this.state.url} />
+              <RestaurantsDashboard 
+                {...props} 
+                url={this.state.url}
+                recordRestaurants={this.recordRestaurants}
+                restaurants={this.state.restaurants}
+                userId={this.state.user.id} />
             </div>
           )}
         />
