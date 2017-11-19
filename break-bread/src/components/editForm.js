@@ -83,7 +83,8 @@ this.setState({
 }
 
 render(){
-	return(<div>
+	return(
+		<div class="contents">
 				<h1>Edit whatever was wrong</h1>
 				<form onSubmit={this.personSubmit}>
 					<label>Name: </label>

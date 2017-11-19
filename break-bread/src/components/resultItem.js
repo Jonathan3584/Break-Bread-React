@@ -11,6 +11,7 @@ class ResultItem extends Component {
 
 
 render(){
+	const r = this.props.data;
 	return(
 		<div>
 			<h1>Result Item</h1>

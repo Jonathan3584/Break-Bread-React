@@ -19,7 +19,8 @@ class AuthenticationShell extends Component {
       user: false,
       url: "http://localhost:3000",
       people: [],
-      restaurants: []
+      restaurants: [],
+      results: []
     };
     this.initUser = this.initUser.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -27,6 +28,7 @@ class AuthenticationShell extends Component {
     this.initUser = this.initUser.bind(this);
     this.recordPeople = this.recordPeople.bind(this);
     this.recordRestaurants = this.recordRestaurants.bind(this);
+    this.recordResults = this.recordResults.bind(this);
   }
 
   componentDidMount() {
@@ -84,16 +86,20 @@ class AuthenticationShell extends Component {
     });
   }
   recordPeople(data) {
-    this.setState({ people: data}, () => {
-        console.log('people retrieved', this.state.people)
-      });
+    this.setState({ people: data }, () => {
+      console.log("people retrieved", this.state.people);
+    });
   }
   recordRestaurants(data) {
-    this.setState({restaurants: data}, () => {
-      console.log('restaurants retrieved', this.state.restaurants)
-    })
+    this.setState({ restaurants: data }, () => {
+      console.log("restaurants retrieved", this.state.restaurants);
+    });
   }
-
+  recordResults(data) {
+    this.setState({results: data}, () => {
+      console.log("results retrieved", this.state.results);
+    });
+  }
 
   renderView() {
     return (
@@ -111,9 +117,7 @@ class AuthenticationShell extends Component {
           path="/people"
           render={props => (
             <div>
-              <div id="navBar">
-                <NavBar logout={this.logout} />
-              </div>
+              <NavBar logout={this.logout} />
               <PeopleDashboard
                 {...props}
                 url={this.state.url}
@@ -128,13 +132,12 @@ class AuthenticationShell extends Component {
           path="/people/new"
           render={props => (
             <div>
-              <div id="navBar">
-                <NavBar logout={this.logout} />
-              </div>
-              <NewForm 
-              {...props} 
-              url={this.state.url}
-              userId={this.state.user.id} />
+              <NavBar logout={this.logout} />
+              <NewForm
+                {...props}
+                url={this.state.url}
+                userId={this.state.user.id}
+              />
             </div>
           )}
         />
@@ -142,9 +145,7 @@ class AuthenticationShell extends Component {
           path="/people/:id/edit"
           render={props => (
             <div>
-              <div id="navBar">
-                <NavBar logout={this.logout} />
-              </div>
+              <NavBar logout={this.logout} />
               <EditForm {...props} url={this.state.url} />
             </div>
           )}
@@ -153,12 +154,12 @@ class AuthenticationShell extends Component {
           path="/people/:id/search"
           render={props => (
             <div>
-              <div id="navBar">
-                <NavBar logout={this.logout} />
-              </div>
+              <NavBar logout={this.logout} />
               <SearchResults 
               {...props} 
-              url={this.state.url} />
+              url={this.state.url}
+              recordResults={this.recordResults}
+              results={this.state.results} />
             </div>
           )}
         />
@@ -166,15 +167,14 @@ class AuthenticationShell extends Component {
           path="/people/:id"
           render={props => (
             <div>
-              <div id="navBar">
-                <NavBar logout={this.logout} />
-              </div>
-              <RestaurantsDashboard 
-                {...props} 
+              <NavBar logout={this.logout} />
+              <RestaurantsDashboard
+                {...props}
                 url={this.state.url}
                 recordRestaurants={this.recordRestaurants}
                 restaurants={this.state.restaurants}
-                userId={this.state.user.id} />
+                userId={this.state.user.id}
+              />
             </div>
           )}
         />
@@ -183,11 +183,7 @@ class AuthenticationShell extends Component {
   }
 
   render() {
-    return (
-      <div id="container">
-        <div className="contents">{this.renderView()}</div>
-      </div>
-    );
+    return <div id="container">{this.renderView()}</div>;
   }
 }
 

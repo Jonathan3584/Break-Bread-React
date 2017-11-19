@@ -24,10 +24,12 @@ class RestaurantsDashboard extends Component {
 		})
 	}	
 
-	deleteRestaurant() {
+	deleteRestaurant(e, id) {
+		e.preventDefault();
 		console.log(this.props)
+		
 		// axios
-		// .delete(`${this.props.url}/people/${person_id}/restaurants/${id}`)
+		// .delete(`${this.props.url}/people/${this.props.match.params.id}/restaurants/${id}`)
 		// .then(res => {
 		// 	console.log('restaurant removed from DB')
 		// })
@@ -50,10 +52,10 @@ class RestaurantsDashboard extends Component {
 		console.log('in RestaurantsDashboard.render this.props.restaurants', this.props.restaurants)
 		const restaurants = this.props.restaurants.map(this.restaurantTile) 
 		return(
-			<div>
-			<h1 class="dashboardHeader">Restaurants Dashboard</h1>
-			{restaurants}
-			<Link class="searchLink" to={`${this.props.match.params.id}/search`}>Find More Restaurants</Link>
+			<div className="contents">
+			<h1 className="dashboardHeader">Restaurants Dashboard</h1>
+			<div className="dashboard">{restaurants}</div>
+			<Link className="searchLink" to={`${this.props.match.params.id}/search`}>Find More Restaurants</Link>
 			</div>
 			);
 	}

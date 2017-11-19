@@ -1,26 +1,96 @@
-#container {}
-#navBar {}
-#contents {}
+body {
+	align-content: center;
+	text-align: center;
+	font-family: 'Roboto Condensed', sans-serif;
+	background-image: url("assets/table.jpg");
+}
+#container {
+	display: flex;
+	flex-direction: column;
+}
+#navBar {
+	position: fixed;
+	display: flex;
+	align-content: space-around;
+	flex-direction: row;
+	align-content: space-around;
+	background-color: rgb(240, 240, 240);
+	height: 15vh;
+	min-height: 100px;
+	width: 100vw;
+}
+.contents {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	height: 100vh;
+	overflow-y: auto;
+}
 .dashboardContainer {}
 .itemContainer {}
-.navLink {}
+#navHeader {
+	text-align: left;
+	width: 60%;
+	justify-content: center;
+}
+#navLinks {
+	display: flex;
+	text-align: right;
+	flex-direction: column;
+	justify-content: center;
+	width: 40%;
+}
+.dashboard {
+	display: flex;
+	flex-direction: row;
+	width: 80vw;
+	justify-content: space-around;
+	margin: auto;
+}
+.navLink {
+	justify-content: flex-end;
+	text-decoration: none;
+	color: black;
+}
 .dashboardHeader {}
-.editLink {}
-.addLink {}
+.link {
+	text-decoration: none;
+	color: black;
+}
+.personItem {
+	background-color: white;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
+	border-radius: 5px;
+	width: 20vw;
+
+}
+.restaurantItem{
+	background-color: white;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
+	border-radius: 5px;
+	width: 20vw;
+	text-decoration: none;
+	color: black;
+}
 .nameHeader {}
 .relationshipText {}
 .addressText {}
 .dateText {}
 .budgetText {}
 .restaurantImage {}
-.personLink {}
 .editLink {}
 .searchLink {}
-.personItem {}
 .restaurantItem {}
 .restaurantHeader {}
 .ratingText {}
-
+a {
+	text-decoration: none;
+}
 form {}
 input {}
 

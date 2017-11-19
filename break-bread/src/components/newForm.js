@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from 'axios';
 import "../App.css";
 
@@ -42,7 +42,8 @@ personSubmit(event){
 		}
 	})
 	.then(response => {
-		console.log('person added')
+		console.log("added person")
+		this.props.history.push(`/people`);
 	})
 	.catch(err => {
 		console.log('Error in newForm, personSubmit', err)
@@ -82,7 +83,7 @@ this.setState({
 
 render(){
 	return(
-		<div>
+		<div className="contents">
 				<h1>Add Someone You Care About</h1>
 				<form onSubmit={this.personSubmit}>
 					<label>Name: </label>
