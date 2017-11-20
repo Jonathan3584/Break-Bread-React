@@ -12,7 +12,7 @@ class NavBar extends Component {
 		return (
 			<div id="navBar">
 				<div id="navHeader">
-					<h1>Break Bread</h1>
+					<h1 id="navHeaderText">Break Bread</h1>
 				</div>
 				<div id="navLinks">
 					<Link class="navLink" to="/people">

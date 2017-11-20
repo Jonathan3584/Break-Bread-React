@@ -3,6 +3,7 @@ body {
 	text-align: center;
 	font-family: 'Roboto Condensed', sans-serif;
 	background-image: url("assets/table.jpg");
+	color: black;
 }
 #container {
 	display: flex;
@@ -28,11 +29,15 @@ body {
 	justify-content: center;
 	height: 100vh;
 	overflow-y: auto;
+	color: black;
 }
 #navHeader {
 	text-align: left;
 	width: 60%;
 	justify-content: center;
+}
+#navHeaderText {
+	margin-left: 25px;
 }
 #navLinks {
 	display: flex;
@@ -50,12 +55,25 @@ body {
 	align-content: space-around;
 	margin: auto;
 }
+.authDashboard{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 60vw;
+	justify-content: center;
+	align-content: center;
+	margin: auto;
+}
 .navLink {
 	justify-content: flex-end;
 	text-decoration: none;
+	margin-right: 25px;
 	color: black;
 }
-.dashboardHeader {}
+.dashboardHeader {
+	margin-top: 25px;
+	color: black;
+}
 .link {
 	text-decoration: none;
 	color: black;
@@ -72,26 +90,57 @@ body {
 	margin-bottom: 20px;
 }
 .nameHeader {}
-.restaurantImage {}
-.editLink {}
-.searchLink {}
-.restaurantItem {}
-.restaurantHeader {}
-.ratingText {}
 a {
 	text-decoration: none;
+	color: black ;
+	cursor: pointer;
 }
 form {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	align-content: space-around;
+	width: 250px;
+	align-content: center;
 	justify-content: center;
+	margin: auto;
 }
 input {
-	width: 30vw;
+	  border: none;
+    font-size: 15px;
+    text-align: left;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    color: #4a4a4a;
+    background-color: #ffffff;
 }
 
+button {
+    padding: 0;
+    margin: 10px;
+    width: 98px;
+    height: 40px;
+    background-color: #eef0f3;
+    color: #4a4a4a;
+    border: 2px solid #4a4a4a;
+    -webkit-box-shadow: 8px 8px 4px 0px rgba(126,127,133,1);
+		-moz-box-shadow: 8px 8px 4px 0px rgba(126,127,133,1);
+		box-shadow: 8px 8px 4px 0px rgba(126,127,133,1);	
+    border-radius: 5px;
+    font-size: 15px;
+    transition: .5s ease;
+    align-self: flex-end;
+}
+button:hover {
+    cursor: pointer;
+    transition: .3s ease;
+    box-shadow: none;
+    opacity: 1;
+    background-color: #6391c1;
+    border: none;
+    color: #eef0f3;
+}
 
 
 

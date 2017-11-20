@@ -11,9 +11,6 @@ class EditForm extends Component {
 			address: '',
 			relationship: '',
 			birthDate: '',
-			giftHoliday1: '',
-			giftHoliday2: '',
-			giftHoliday3: '',
 			budget: ''
 		}
 		this.nameChange = this.nameChange.bind(this);
@@ -22,6 +19,18 @@ class EditForm extends Component {
 		this.birthDateChange = this.birthDateChange.bind(this);
 		this.budgetChange = this.budgetChange.bind(this);
 		this.personSubmit = this.personSubmit.bind(this)
+	}
+	componentDidMount () {
+		const p = this.props.people.filter(person => {
+		console.log(person.id)
+		return person.id === parseInt(this.props.match.params.id)
+		})[0];
+		this.setState({
+			name: p.name, 
+			address: p.address, 
+			relationship: p.relationship, 
+			birthDate: p.birthDate, 
+			budget: p.budget})
 	}
 	personSubmit(event){
 	event.preventDefault();
@@ -46,6 +55,7 @@ class EditForm extends Component {
 	})
 	.then(response => {
 		console.log('person updated')
+		this.props.history.push(`/people`);
 	})
 	.catch(err => {
 		console.log('Error in editForm, personSubmit', err)
@@ -83,9 +93,15 @@ this.setState({
 }
 
 render(){
+	const p = this.props.people.filter(person => {
+		console.log(person.id)
+		return person.id === parseInt(this.props.match.params.id)
+	})[0];
+	console.log(p)
 	return(
-		<div class="contents">
+		<div className="contents">
 				<h1>Edit whatever was wrong</h1>
+				<div className="dashboard">
 				<form onSubmit={this.personSubmit}>
 					<label>Name: </label>
 					<input
@@ -98,6 +114,7 @@ render(){
 					<input
 						type="text"
 						onChange={this.addressChange}
+					
 						value={this.state.address}
 					/>
 					<br />
@@ -105,6 +122,7 @@ render(){
 					<input
 						type="text"
 						onChange={this.relationshipChange}
+					
 						value={this.state.relationship}
 					/>
 					<br />
@@ -112,6 +130,7 @@ render(){
 					<input
 						type="date"
 						onChange={this.birthDateChange}
+					
 						value={this.state.birthDate}
 					/>
 					<br />
@@ -119,11 +138,13 @@ render(){
 					<input
 						type="text"
 						onChange={this.budgetChange}
+					
 						value={this.state.budget}
 					/>
 					<br />
-					<input type="submit" value="Submit" />
+					<button type="submit" value="Submit">Submit</button>
 				</form>
+				</div>
 			</div>
 			);
 }

@@ -41,10 +41,12 @@ class Login extends Component {
   render() {
     return (
       <div className="StartContainer">
-        
+         <div className="StartNav">
+          <h1 className="authHeaderText">Break Bread</h1>
+        </div>
+        <div className="authDashboard">
+          <h2 className="LogInText">Welcome Back!</h2>
 
-        <div className="StartContainerMini">
-          <p className="LogInText">Welcome Back!</p>
           <form onSubmit={this.login.bind(this)}>
             <input
               value={this.state.inputs.email}

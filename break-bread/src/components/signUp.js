@@ -45,12 +45,14 @@ class SignUp extends Component {
     return (
       <div className="StartContainer">
         <div className="StartNav">
-          <p className="WokeSmallText">Woke</p>
-          <p className="TaglineText">Socio-political awareness made easy</p>
+          <h1 className="authHeaderText">Break Bread</h1>
         </div>
 
-        <div className="StartContainerMini">
-          <p className="LogInText">Sign Up</p>
+        <div className="authDashboard">
+          <div width="100%">
+          <h2 className="LogInText">Sign Up</h2>
+          </div>
+          <div width="100%">
           <form onSubmit={this.signUp.bind(this)}>
             <input
               value={this.state.inputs.name}
@@ -87,6 +89,7 @@ class SignUp extends Component {
             <button type="submit">Sign Up</button>
             <button onClick={this.props.toggleMode}>Log In</button>
           </form>
+          </div>
         </div>
       </div>
     );

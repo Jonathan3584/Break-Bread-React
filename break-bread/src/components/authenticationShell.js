@@ -33,8 +33,7 @@ class AuthenticationShell extends Component {
 
   componentDidMount() {
     this.initUser();
-  }
-
+}
   // method to initialize our user
   initUser() {
     // get the token from the cookie
@@ -146,7 +145,7 @@ class AuthenticationShell extends Component {
           render={props => (
             <div>
               <NavBar logout={this.logout} />
-              <EditForm {...props} url={this.state.url} />
+              <EditForm {...props} url={this.state.url} people={this.state.people}/>
             </div>
           )}
         />

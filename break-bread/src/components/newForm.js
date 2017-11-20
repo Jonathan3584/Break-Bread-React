@@ -85,7 +85,8 @@ render(){
 	return(
 		<div className="contents">
 				<h1 className="dashboardHeader">Add Someone You Care About</h1>
-				<form className="dashboard" onSubmit={this.personSubmit}>
+				<div className="dashboard">
+				<form onSubmit={this.personSubmit}>
 					<label>Name: </label>
 					<input
 						type="text"
@@ -121,8 +122,9 @@ render(){
 						value={this.state.budget}
 					/>
 					<br />
-					<input type="submit" value="Submit" />
+					<button type="submit" value="Submit">Submit</button>
 				</form>
+				</div>
 			</div>
 );
 }

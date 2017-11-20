@@ -50,14 +50,23 @@ class PeopleDashboard extends Component {
 	}
 
 	render(){
-	
 		const people = this.props.people.map(this.personTile)
+		if (people.length === 0){
+		return(
+			<div className="contents" >
+				<h1 className="dashboardHeader">People Dashboard</h1>
+				<div className="dashboard"><Link className="link" to="new">You don't have anyone to shop for yet! Click here to add someone</Link></div>
+			</div>
+			);
+		}
+		else {
 		return(
 			<div className="contents" >
 				<h1 className="dashboardHeader">People Dashboard</h1>
 				<div className="dashboard">{people}</div>
 			</div>
-			)
+			);
+	}
 	}
 
 
