@@ -15,20 +15,20 @@ body {
 	flex-direction: row;
 	align-content: space-around;
 	background-color: rgb(240, 240, 240);
-	height: 15vh;
-	min-height: 100px;
+	height: 10vh;
+	min-height: 80px;
 	width: 100vw;
 }
 .contents {
+	margin-top: 12vh;
 	display: flex;
-	flex-direction: column;
-	align-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: flex-start;
 	justify-content: center;
 	height: 100vh;
 	overflow-y: auto;
 }
-.dashboardContainer {}
-.itemContainer {}
 #navHeader {
 	text-align: left;
 	width: 60%;
@@ -44,8 +44,10 @@ body {
 .dashboard {
 	display: flex;
 	flex-direction: row;
-	width: 80vw;
+	flex-wrap: wrap;
+	width: 90vw;
 	justify-content: space-around;
+	align-content: space-around;
 	margin: auto;
 }
 .navLink {
@@ -58,16 +60,7 @@ body {
 	text-decoration: none;
 	color: black;
 }
-.personItem {
-	background-color: white;
-	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
-	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
-	border-radius: 5px;
-	width: 20vw;
-
-}
-.restaurantItem{
+.item{
 	background-color: white;
 	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
 	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.31);
@@ -76,12 +69,9 @@ body {
 	width: 20vw;
 	text-decoration: none;
 	color: black;
+	margin-bottom: 20px;
 }
 .nameHeader {}
-.relationshipText {}
-.addressText {}
-.dateText {}
-.budgetText {}
 .restaurantImage {}
 .editLink {}
 .searchLink {}
@@ -91,8 +81,16 @@ body {
 a {
 	text-decoration: none;
 }
-form {}
-input {}
+form {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: space-around;
+	justify-content: center;
+}
+input {
+	width: 30vw;
+}
 
 
 

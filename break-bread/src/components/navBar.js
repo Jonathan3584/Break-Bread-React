@@ -15,7 +15,7 @@ class NavBar extends Component {
 					<h1>Break Bread</h1>
 				</div>
 				<div id="navLinks">
-					<Link class="navLink" to="../people">
+					<Link class="navLink" to="/people">
 						People
 					</Link>
 					<Link class="navLink" to="../people/new">

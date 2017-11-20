@@ -7,10 +7,7 @@ import ResultItem from "./resultItem";
 class SearchResults extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			results: []
-		};
-		this.addRestaurant = this.addRestaurant.bind(this);
+		
 		this.resultTile = this.resultTile.bind(this);
 	}
 	componentDidMount() {
@@ -28,10 +25,6 @@ class SearchResults extends Component {
 			});
 	}
 
-	addRestaurant(){
-		//Add this restaurant to the database
-	}
-
 	resultTile(resultDatum, index) {
 		return <ResultItem add={this.addRestaurant} data={resultDatum} />;
 	}
@@ -43,9 +36,9 @@ class SearchResults extends Component {
 		);
 		const results = this.props.results.map(this.resultTile);
 		return (
-			<div class="contents">
-				<h1 class="dashboardHeader">Search Results</h1>
-				<ResultItem />
+			<div className="contents">
+				<h1 className="dashboardHeader">Search Results</h1>
+				<div className="dashboard">{results}</div>
 			</div>
 		);
 	}

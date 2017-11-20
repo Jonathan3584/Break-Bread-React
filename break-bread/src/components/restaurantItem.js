@@ -13,8 +13,8 @@ class RestaurantItem extends Component {
 		const r = this.props.data;
 		return (
 			<a rel="external" target="_blank" href={r.url}>
-				<div className="restaurantItem">
-					<h2 class="nameHeader">{r.name}</h2>
+				<div className="item">
+					<h2 className="nameHeader">{r.name}</h2>
 					<h5>{r.category}</h5>
 					<img src={r.photo} width="80%" alt="" />
 					<p>Rating: {r.rating}</p>

@@ -84,8 +84,8 @@ this.setState({
 render(){
 	return(
 		<div className="contents">
-				<h1>Add Someone You Care About</h1>
-				<form onSubmit={this.personSubmit}>
+				<h1 className="dashboardHeader">Add Someone You Care About</h1>
+				<form className="dashboard" onSubmit={this.personSubmit}>
 					<label>Name: </label>
 					<input
 						type="text"

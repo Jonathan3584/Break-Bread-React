@@ -18,7 +18,7 @@ renderView() {
 	}
 	const p = this.props.data
 	return(
-		<div className="personItem">
+		<div className="item">
 			<h2 className="nameHeader">{p.name}</h2>
 			<h4 className="relationshipText">{p.relationship}</h4>
 			<p className="addressText">{p.address}</p>
