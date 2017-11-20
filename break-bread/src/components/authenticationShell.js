@@ -122,7 +122,7 @@ class AuthenticationShell extends Component {
                 url={this.state.url}
                 recordPeople={this.recordPeople}
                 people={this.state.people}
-                userId={this.state.user.id}
+                user={this.state.user}
               />
             </div>
           )}
@@ -135,7 +135,7 @@ class AuthenticationShell extends Component {
               <NewForm
                 {...props}
                 url={this.state.url}
-                userId={this.state.user.id}
+                user={this.state.user}
               />
             </div>
           )}
@@ -145,7 +145,7 @@ class AuthenticationShell extends Component {
           render={props => (
             <div>
               <NavBar logout={this.logout} />
-              <EditForm {...props} url={this.state.url} people={this.state.people}/>
+              <EditForm {...props} url={this.state.url} people={this.state.people} user={this.state.user}/>
             </div>
           )}
         />
@@ -158,7 +158,8 @@ class AuthenticationShell extends Component {
               {...props} 
               url={this.state.url}
               recordResults={this.recordResults}
-              results={this.state.results} />
+              results={this.state.results}
+              user={this.state.user} />
             </div>
           )}
         />

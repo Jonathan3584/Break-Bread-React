@@ -31,7 +31,7 @@ class RestaurantsDashboard extends Component {
 		e.preventDefault();
 
 		axios
-		.delete(`${this.props.url}/people/${this.props.match.params.id}/restaurants/${id}`)
+		.delete(`${this.props.url}/people/${this.props.match.params.id}/restaurants/${id}`, {params: {auth_token: this.props.user.token}})
 		.then(res => {
 			console.log('restaurant removed from DB');
 			this.refreshState();
@@ -59,7 +59,7 @@ class RestaurantsDashboard extends Component {
 		 <div className="contents">
 			<h1 className="dashboardHeader">Restaurants Dashboard</h1>
 			<div className="dashboard">
-			<h3><Link className="link" to={`${this.props.match.params.id}/search`}>You don't have any restaurants saved yet.  Click to add some!</Link></h3>
+			<h3 className="link"><Link to={`${this.props.match.params.id}/search`}>You don't have any restaurants saved yet.  Click to add some!</Link></h3>
 			</div>
 			</div>
 			);
@@ -69,7 +69,7 @@ class RestaurantsDashboard extends Component {
 			<div className="contents">
 			<h1 className="dashboardHeader">Restaurants Dashboard</h1>
 			<div className="dashboard">{restaurants}</div>
-			<Link className="link" to={`${this.props.match.params.id}/search`}>Find More Restaurants</Link>
+			<h3 className="link"><Link to={`${this.props.match.params.id}/search`}>Find More Restaurants</Link></h3>
 			</div>
 			);
 	}

@@ -18,11 +18,11 @@ renderView() {
 
 	return (
 		<div className="item">
-			<h2 className="nameHeader"><a rel="external" target="_blank" href={r.url}>{r.name}</a></h2>
+			<h2 className="nameHeader link"><a rel="external" target="_blank" href={r.url}>{r.name}</a></h2>
 			<p>{r.category}</p>
 			<img src={ImageParse.match(r.photo)} width="80%" alt=""/>
 			<p>Rating: {r.rating}</p>
-			<h4 onClick={onClick}>Add {r.name}</h4>
+			<h4 className="link" onClick={onClick}>Add {r.name}</h4>
 		</div>
 		)
 }

@@ -17,7 +17,7 @@ class PeopleDashboard extends Component {
 		}
 	refreshState() {
 		axios
-		.get(`${this.props.url}/people`)
+		.get(`${this.props.url}/people`, {params: {auth_token: this.props.user.token}})
 		.then(res => {
 			this.props.recordPeople(res.data)
 		})

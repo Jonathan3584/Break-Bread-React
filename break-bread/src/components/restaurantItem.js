@@ -16,7 +16,7 @@ class RestaurantItem extends Component {
 		};
 		return (
 			<div className="item">
-				<h2 className="nameHeader">
+				<h2 className="nameHeader link">
 					<a rel="external" target="_blank" href={r.url}>
 						{r.name}
 					</a>
@@ -24,9 +24,9 @@ class RestaurantItem extends Component {
 				<h5>{r.category}</h5>
 				<img src={ImageParse.match(r.photo)} width="80%" alt="" />
 				<p>Rating: {r.rating}</p>
-				<a className="link" onClick={onClick}>
+				<p className="link"><a onClick={onClick}>
 					Delete this restaurant
-				</a>
+				</a></p>
 			</div>
 		);
 	}

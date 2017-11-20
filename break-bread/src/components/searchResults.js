@@ -42,6 +42,8 @@ class SearchResults extends Component {
 		axios
 		.post(`${this.props.url}/people/${this.props.match.params
 					.id}/restaurants/`, restaurant)
+		.then(this.props.history.push(`/people/${this.props.match.params
+					.id}`))
 	}
 
 	resultTile(resultDatum, index) {

@@ -19,12 +19,10 @@ renderView() {
 			<h2 className="nameHeader">{p.name}</h2>
 			<h4>{p.relationship}</h4>
 			<p>{p.birthday}</p>
-			<p>Budget: ${p.budget}</p>
-			<Link className="link" to={`../people/${p.id}`}>Pick me!</Link>
-			<br/>
-			<Link className="link" to={`../people/${p.id}/edit`}>Edit me!</Link>
-			<br/>
-			<a className="link" onClick={onClick}>Delete me!</a>
+			<h6>Budget: ${p.budget}</h6>
+			<p className="link"><Link to={`../people/${p.id}`}>Pick me!</Link></p>
+			<p className="link"><Link to={`../people/${p.id}/edit`}>Edit me!</Link></p>
+			<p className="link"><a onClick={onClick}>Delete me!</a></p>
 		</div>
 		);
 }
