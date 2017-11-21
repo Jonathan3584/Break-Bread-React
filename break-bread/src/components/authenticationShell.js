@@ -17,7 +17,7 @@ class AuthenticationShell extends Component {
     // set up our state.
     this.state = {
       user: false,
-      url: "http://localhost:3000",
+      url: "https://immense-brook-35993.herokuapp.com",
       people: [],
       restaurants: [],
       results: []
