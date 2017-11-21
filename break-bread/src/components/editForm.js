@@ -44,7 +44,8 @@ class EditForm extends Component {
 	console.log(this.state);
 	axios
 	//THIS URL MAY NOT BE ACCURATE -- PARAMS.ID is a placeholder
-	.put(`${this.props.url}/people/${this.props.match.params.id}`, {person:
+	.put(`${this.props.url}/people/${this.props.match.params.id}`, {auth_token: this.props.user.token,
+		person:
 		{
 		name: name,
 		address: address,

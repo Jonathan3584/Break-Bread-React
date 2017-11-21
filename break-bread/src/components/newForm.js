@@ -22,6 +22,7 @@ class NewForm extends Component {
 	}
 personSubmit(event){
 	event.preventDefault();
+	console.log(this.props.user.token)
 	const {
 		name,
 		address,
@@ -29,9 +30,10 @@ personSubmit(event){
 		birthDate,
 		budget
 	} = this.state;
-	const	userId = this.props.userId;
+	const	userId = this.props.user.id;
 	axios
-	.post(`${this.props.url}/people/`, {person:
+	.post(`${this.props.url}/people/`, {auth_token: this.props.user.token,
+		person:
 		{
 		name: name,
 		address: address,
@@ -39,8 +41,8 @@ personSubmit(event){
 		birth_date: birthDate,
 		budget: budget,
 		user_id: userId
-		}
-	})
+		}}
+	)
 	.then(response => {
 		console.log("added person")
 		this.props.history.push(`/people`);
