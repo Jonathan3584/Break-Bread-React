@@ -2,7 +2,7 @@ body {
 	align-content: center;
 	text-align: center;
 	font-family: 'Roboto Condensed', sans-serif;
-	background-image: url("assets/table.jpg");
+	background: url("assets/backdrop.png") no-repeat center center fixed;
 	background-repeat: no-repeat;
 	color: black;
 }
